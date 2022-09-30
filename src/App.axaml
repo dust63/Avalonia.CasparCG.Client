@@ -1,0 +1,20 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Avalonia.CasparCG.Client"
+			 xmlns:themes="clr-namespace:Neumorphism.Avalonia.Styles.Themes;assembly=Neumorphism.Avalonia"
+             x:Class="Avalonia.CasparCG.Client.App">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <!--<Application.Styles>
+        --><!--<FluentTheme Mode="Dark"/>--><!--
+		<StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+		<StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
+        <StyleInclude Source="avares://Avalonia.CasparCG.Client/Styles/Icons.axaml"/>      
+    </Application.Styles>-->
+	<Application.Styles>
+		<themes:NeumorphismTheme BaseTheme="Light" PrimaryColor="Purple" SecondaryColor="Lime" />
+		<StyleInclude Source="avares://Avalonia.CasparCG.Client/Styles/Icons.axaml"/>
+	</Application.Styles>
+</Application>
