@@ -9,7 +9,7 @@
 		<TextBlock Classes="h1" HorizontalAlignment="Center">No connection</TextBlock>
 		<TextBlock HorizontalAlignment="Center">Seems like your connection is off..</TextBlock>
 		<TextBlock HorizontalAlignment="Center">Click the button below to connect on CasparCG</TextBlock>
-		<Button Margin="25" Width="80" Height="30" HorizontalAlignment="Center" HorizontalContentAlignment="Center">Connect</Button>
+		<Button Margin="25" Width="80" Height="30" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding ConnectCasparCg}">Connect</Button>
 	</StackPanel>
  
   

@@ -56,7 +56,8 @@
         <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
-      <TextBlock>You are not connected!</TextBlock>
+      <TextBlock IsVisible="{Binding !CasparDevice.IsConnected}">You are not connected!</TextBlock>
+      <TextBlock IsVisible="{Binding CasparDevice.IsConnected}">You are connected!</TextBlock>
 </Grid>
 </Border>
 

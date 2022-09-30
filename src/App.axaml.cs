@@ -17,8 +17,8 @@ namespace Avalonia.CasparCG.Client
         {
             Container = StartUp.CreateHosting();
             AvaloniaXamlLoader.Load(this);
-            //var thm = Container.GetRequiredService<FluentThemeManager>();
-            //thm.Initialize(this);
+            var thm = Container.GetRequiredService<FluentThemeManager>();
+            thm.Initialize(this);
         }
 
         public override void OnFrameworkInitializationCompleted()

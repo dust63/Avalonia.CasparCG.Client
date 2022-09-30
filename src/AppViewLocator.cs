@@ -7,7 +7,7 @@ namespace Avalonia.CasparCG.Client
     {
         IViewFor? IViewLocator.ResolveView<T>(T viewModel, string? contract)
         {
-            var name = viewModel.GetType().FullName!.Replace("ViewModel", "View");
+            var name = viewModel!.GetType().FullName!.Replace("ViewModel", "View");
             var type = Type.GetType(name);
 
             if (type != null)

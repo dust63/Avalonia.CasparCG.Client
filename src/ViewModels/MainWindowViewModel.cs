@@ -1,4 +1,5 @@
 ﻿using System.Reactive;
+using Avalonia.Threading;
 using ReactiveUI;
 using StarDust.CasparCG.net.Connection;
 using StarDust.CasparCG.net.Device;
@@ -7,7 +8,7 @@ namespace Avalonia.CasparCG.Client.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase, IScreen
     {
-        private readonly ICasparDevice _casparDevice;
+        public ICasparDevice CasparDevice { get; }
         private readonly FluentThemeManager _fluentThemeManager;
 
         public RoutingState Router { get; } = new RoutingState();
@@ -17,19 +18,16 @@ namespace Avalonia.CasparCG.Client.ViewModels
 
         // The command that navigates a user back.
         public ReactiveCommand<Unit, Unit> GoBack => Router.NavigateBack;
-
         public ReactiveCommand<Unit, Unit> ToggleDarkThemeCommand { get; }
-
 
         public MainWindowViewModel(ICasparDevice casparDevice, FluentThemeManager fluentThemeManager)
         {
-            _casparDevice = casparDevice;
+            CasparDevice = casparDevice;
             _fluentThemeManager = fluentThemeManager;
-            _casparDevice.ConnectionStatusChanged += ConnectionStatusChanged;
-            Router.Navigate.Execute(new NotConnectedViewModel(this));
+            CasparDevice.ConnectionStatusChanged += ConnectionStatusChanged;
+            Router.Navigate.Execute(new NotConnectedViewModel(this, casparDevice));
             ToggleDarkThemeCommand = ReactiveCommand.Create(ToggleDarkMode);
         }
-
 
         private void ToggleDarkMode()
         {
@@ -37,10 +35,17 @@ namespace Avalonia.CasparCG.Client.ViewModels
         }
 
         private void ConnectionStatusChanged(object sender, ConnectionEventArgs e)
-        {
-            Router.Navigate.Execute(new NotConnectedViewModel(this));
+        { 
+            if(e.Connected)
+            {
+                Dispatcher.UIThread.Post(() => Router.Navigate.Execute(new ConnectedViewModel(this, CasparDevice)));
+                return;
+            }
+
+            Dispatcher.UIThread.Post(() =>
+            Router.Navigate.Execute(new NotConnectedViewModel(this, CasparDevice)));
         }
 
-        public string Greeting => $"Welcome to Avalonia! {_casparDevice.IsConnected}";
+        public string Greeting => $"Welcome to Avalonia! {CasparDevice.IsConnected}";
     }
 }

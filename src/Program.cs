@@ -18,7 +18,6 @@ namespace Avalonia.CasparCG.Client
             => AppBuilder.Configure<App>()
                 .UseReactiveUI()    
                 .UsePlatformDetect()
-                .LogToTrace()
-                .UseReactiveUI();
+                .LogToTrace();
     }
 }

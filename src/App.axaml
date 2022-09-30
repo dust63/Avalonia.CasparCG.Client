@@ -7,14 +7,14 @@
         <local:ViewLocator/>
     </Application.DataTemplates>
 
-    <!--<Application.Styles>
-        --><!--<FluentTheme Mode="Dark"/>--><!--
+    <Application.Styles>
+       <FluentTheme Mode="Dark"/>
 		<StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
 		<StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
         <StyleInclude Source="avares://Avalonia.CasparCG.Client/Styles/Icons.axaml"/>      
-    </Application.Styles>-->
-	<Application.Styles>
+    </Application.Styles>
+	<!-- <Application.Styles>
 		<themes:NeumorphismTheme BaseTheme="Light" PrimaryColor="Purple" SecondaryColor="Lime" />
 		<StyleInclude Source="avares://Avalonia.CasparCG.Client/Styles/Icons.axaml"/>
-	</Application.Styles>
+	</Application.Styles> -->
 </Application>

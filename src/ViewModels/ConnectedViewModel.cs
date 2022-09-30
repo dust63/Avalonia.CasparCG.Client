@@ -7,7 +7,7 @@ using StarDust.CasparCG.net.Device;
 
 namespace Avalonia.CasparCG.Client.ViewModels
 {
-    public class NotConnectedViewModel : ViewModelBase, IRoutableViewModel
+    public class ConnectedViewModel : ViewModelBase, IRoutableViewModel
     {
         private readonly ICasparDevice _casparDevice;
 
@@ -15,7 +15,7 @@ namespace Avalonia.CasparCG.Client.ViewModels
         public string? UrlPathSegment { get; } = Guid.NewGuid().ToString().Substring(0, 5);
         public IScreen HostScreen { get; }
 
-        public NotConnectedViewModel(IScreen screen, ICasparDevice casparDevice)
+        public ConnectedViewModel(IScreen screen, ICasparDevice casparDevice)
         {
             HostScreen = screen;
             _casparDevice = casparDevice;
@@ -27,9 +27,5 @@ namespace Avalonia.CasparCG.Client.ViewModels
              Dispatcher.UIThread.Post(() =>
             _casparDevice.Connect("localhost"));
         }
-
-
-
-
     }
 }
